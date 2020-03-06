@@ -458,9 +458,30 @@ func Values(s interface{}) []interface{} {
 	return New(s).Values()
 }
 
+// FieldList ...
+type FieldList []*Field
+
+// MapToStringSlice ...
+func (list FieldList) MapToStringSlice(fn func(Field) string) []string {
+	res := []string{}
+	for _, field := range list {
+		res = append(res, fn(*field))
+	}
+	return res
+}
+
+// MapToString ...
+func (list FieldList) MapToString(fn func(Field) string) string {
+	res := ""
+	for _, field := range list {
+		res = fmt.Sprintf("%s%s", res, fn(*field))
+	}
+	return res
+}
+
 // Fields returns a slice of *Field. For more info refer to Struct types
 // Fields() method.  It panics if s's kind is not struct.
-func Fields(s interface{}) []*Field {
+func Fields(s interface{}) FieldList {
 	return New(s).Fields()
 }
 
