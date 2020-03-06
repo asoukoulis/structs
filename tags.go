@@ -25,7 +25,6 @@ func parseTag(tag string) (string, tagOptions) {
 	// "name"
 	// "name,opt"
 	// "name,opt,opt2"
-	// ",opt"
 
 	res := strings.Split(tag, ",")
 	return res[0], res[1:]
