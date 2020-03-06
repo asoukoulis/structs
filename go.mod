@@ -1,3 +1,3 @@
-module githum.com/asoukoulis/structs
+module github.com/asoukoulis/structs
 
 go 1.13
